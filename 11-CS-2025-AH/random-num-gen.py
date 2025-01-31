@@ -1,4 +1,6 @@
 import random
+import sqlite3
+
 # 'random' generates a random number between 1 and 100
 # Too high or too low will be printed depending on the user's input
 # User enters number to guess the random number
@@ -11,19 +13,34 @@ import random
 # The user will be prompted to enter a number within the range
 # When the user guesses the correct number, "You win!" will be printed
 
+# add history of guesses
+conn = sqlite3.connect('num_gen_database.db')
+conn.row_factory = sqlite3.Row
+cursor = conn.cursor()
+
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS guesses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    attempt INTEGER,
+    guess INTEGER
+)
+''')
+
 
 number = random.randint(1, 100)
 guess = 0
-attempts = 0
+attempt = 0
 
 while guess != number:
     try:
-        guess = int(input(f"Attempt {attempts +1}: Enter a number between 1 and 100: "))
+        guess = int(input(f"Attempt {attempt +1}: Enter a number between 1 and 100: "))
         if guess < 1 or guess > 100:
             print("Please enter a number within the range!")
             continue
-        attempts += 1
+        attempt += 1
 
+        cursor.execute('INSERT INTO guesses (attempt, guess) VALUES (?, ?)', (attempt, guess))
+        conn.commit()
 
         if guess > number:
             print("Too high!")
@@ -32,4 +49,7 @@ while guess != number:
     except ValueError:
         print("Please enter a valid number!")
 
-print(f"You a winner! You guessed in {attempts} attempts!")
+print(f"You a winner! You guessed in {attempt} attempts!")
+
+conn.close()
+print("Exiting the program.")
