@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Guessing Game</title>
+</head>
+<body>
+<!-- monkey eating banana -->
+<!--  this is jinja template -->
+    <h1>Number Guessing Game</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    {% if not game_over %}
+        <form action="/" method="post">
+            <label for="guess">Enter your guess:</label>
+            <input type="number" name="guess" id="guess" required>
+            <button type="submit">Submit</button>
+        </form>
+    {% else %}
+        <p>Game over! The number was {{ number }}</p>
+        <form method="post">
+            <button type="submit">Play again</button>
+        </form>
+    {% endif %}
+</body>
+</html>
