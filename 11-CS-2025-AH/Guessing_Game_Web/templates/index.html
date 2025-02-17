@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Number Guessing Game</title>
-</head>
+  <head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% block head %}
+    {% endblock %}
+  </head>
 <body>
 <!-- monkey eating banana -->
 <!--  this is jinja template -->
@@ -13,13 +15,17 @@
     {% endif %}
 
     {% if not game_over %}
+<div class="w3-container w3-display-middle w3-border w3-border-deep-orange w3-topbar w3-bottombar w3-leftbar w3-rightbar w3-round-xxlarge">
+    <div class="w3-center">
         <form action="/" method="post">
             <label for="guess">Enter your guess:</label>
             <input type="number" name="guess" id="guess" required>
             <button type="submit">Submit</button>
         </form>
+    </div>
+</div>
     {% else %}
-        <p>Game over! The number was {{ number }}</p>
+<p>Game over!</p>
         <form method="post">
             <button type="submit">Play again</button>
         </form>
