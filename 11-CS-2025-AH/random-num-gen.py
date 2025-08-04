@@ -20,7 +20,7 @@ import os
 # repeat likes to break on me
 repeat = "yes"
 while repeat == "yes":
-    conn = sqlite3.connect('num_gen_database.db')
+    conn = sqlite3.connect('Guessing_Game_Web/templates/num_gen_database.db')
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 

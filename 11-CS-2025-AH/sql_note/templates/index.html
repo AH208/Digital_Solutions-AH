@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Wiseacres Academic Database</title>
+</head>
+<!--body>
+<h1>Schools:</h1>
+{{schools}}
+<br> <br>
+<h1>Staff:</h1>
+{{staff}}
+<br> <br>
+<h1>Qualifications:</h1>
+{{quals}}
+</body-->
+<body>
+    <h1>Wiseacres Academic Database</h1>
+    <h2>All Schools</h2>
+    <ul>
+        {% for school in schools %}
+            <li>{{ school.School_Id }}: {{ school.School_Name }} (Phone: {{ school.Phone }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>All Staff</h2>
+    <ul>
+        {% for person in staff %}
+            <li>{{ person.Staff_Id }}: {{ person.Staff_Name }} (School ID: {{ person.School_Id }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>All Qualifications</h2>
+    <ul>
+        {% for qual in quals %}
+            <li>{{ qual.Staff_Id }}: {{ qual.Degree }} ({{ qual.Place }}, {{ qual.Year }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Links to More Information</h2>
+    <ul>
+        <li><a href="/staff_qualifications">Staff Qualifications</a></li>
+        <li><a href="/school_heads">School Heads</a></li>
+        <li><a href="/staff_by_school/1">Staff by School (School ID = 1)</a></li>
+    </ul>
+</body-->
+</html>

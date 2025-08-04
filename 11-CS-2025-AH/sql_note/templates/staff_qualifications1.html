@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Staff Qualifications</title>
+</head>
+<body>
+    <h1>Staff Qualifications</h1>
+    <ul>
+        {% for staff_name, qualifications in staff_qualifications.items() %}
+            <li>
+                <strong>{{ staff_name }}</strong>
+                <ul>
+                    {% for qual in qualifications %}
+                        <li>{{ qual.Degree }} ({{ qual.Place }}, {{ qual.Year }})</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

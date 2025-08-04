@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subject Enrollment</title>
+</head>
+<body>
+    <h2>Enroll a Student in a Subject</h2>
+    <form action="/enroll" method="POST">
+        <label for="student_id">Select Student:</label>
+        <select name="student_id" id="student_id" required>
+            <option value="{{ student.StudentID }}">{{ student.StudentName }}</option>
+        </select>
+        <br><br>
+
+        <label for="subject_id">Select Subject:</label>
+        <select name="subject_id" id="subject_id" required>
+            <option value="{{ subject.SubjectID }}">{{ subject.Subject }}</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Enroll">
+    </form>
+</body>
+</html>

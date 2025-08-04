@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>School Heads</title>
+</head>
+<body>
+    <h1>School Heads</h1>
+    <ul>
+        {% for head in school_heads %}
+            <li>{{ school_head.School_Name }}: {{ school_head.Head_Name }}</li>
+        {% else %}
+            <li>No school heads found.</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>
