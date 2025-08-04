@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Staff by School</title>
+</head>
+<body>
+    <h1>Staff by School {{ school_id }}</h1>
+    <ul>
+        {% for person in staff %}
+            <li>{{ person.Staff_Name }} ({{ person.School_Name }})</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        <li><a href="/staff_by_school/1">School ID 1</a></li>
+        <li><a href="/staff_by_school/2">School ID 2</a></li>
+        <li><a href="/staff_by_school/3">School ID 3</a></li>
+        <li><a href="/">Back to Home</a></li>
+    </ul>
+</body>
+</html>

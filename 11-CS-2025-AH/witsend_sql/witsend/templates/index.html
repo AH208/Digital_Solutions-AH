@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Welcome to the Witsend Database</h1>
+    <ul>
+        <li>
+            <a href="{{url_for('attributes')}}">How many attributes and tuples in the database?</a>
+            <pre>SELECT COUNT(*) FROM pragma_table_info('staff')</pre>
+            <pre>SELECT COUNT(*) FROM pragma_table_info('allocation')</pre>
+            <pre>SELECT COUNT(*) FROM pragma_table_info('Theaters')</pre>
+        </li>
+        <li>
+            <a href="{{url_for('hacker_ph')}}">What is Ms Hacker’s phone no?</a>
+            <pre>SELECT Phone FROM Staff WHERE Teacher = ('Hacker')</pre>
+        </li>
+        <li>
+            <a href="{{url_for('hacker_ph')}}">What number is the Music Teacher’s room?</a>
+            <pre>SELECT COUNT(*) FROM pragma_table_info('staff')</pre>
+        </li>
+        <li>
+            <a href="{{url_for('cramp_teachers')}}">Which staff teach in the Cramp theater?</a>
+            <pre>SELECT DISTINCT Teacher FROM allocation WHERE Theater = ('Cramp')</pre>
+        </li>
+        <li>
+            <a href="{{url_for('over_enrollment_sub')}}">Which subjects are over-enrolled?</a>
+            <pre>SELECT Subject FROM allocation WHERE Enrolled > (SELECT Capacity FROM Theaters WHERE Theaters.Theater = Allocation.Theater)</pre>
+        </li>
+        <li>
+            <a href="{{url_for('drone_teach_share')}}">Which teachers share a room with Mr Drone?</a>
+            <pre>SELECT Teacher FROM Staff WHERE Room = (SELECT Room FROM Staff WHERE Teacher = Drone AND Teacher !=('DRONE')</pre>
+        </li>
+        <li>
+            <a href="{{url_for('theaters_empty')}}">Which theaters are not currently allocated?</a>
+            <pre>SELECT Theater FROM Theaters WHERE Theater NOT IN (SELECT DISTINCT Theater FROM allocation)</pre>
+        </li>
+        <li>
+            <a href="{{url_for('theaters_cap')}}">Which theaters have a capacity of over 25?</a>
+            <pre>SELECT Theater FROM Theaters WHERE Capacity > 25</pre>
+        </li>
+        <li>
+            <a href="{{url_for('theaters_cap_chock')}}">Which theaters have a greater capacity than the Chockers theater?</a>
+            <pre>SELECT Theater FROM Theaters WHERE Capacity > (SELECT Capacity FROM Theaters WHERE Theater = "Chockers")</pre>
+        </li>
+        <li>
+            <a href="{{url_for('theaters_cap_sing')}}">The singing class is over-enrolled for the room allocated. Is there any other
+room that would be big enough?</a>
+            <pre>SELECT Theater FROM Theaters WHERE Capacity >= (SELECT Enrolled FROM allocation WHERE Subject = "Singing")</pre>
+        </li>
+        <li>
+            <a href="{{url_for('teacher_over_enrolled')}}">What are the names and phone numbers of teachers involved with subjects
+that are over enrolled?</a>
+            <pre>SELECT DISTINCT Staff.Teacher, Staff.Phone FROM Staff JOIN Allocation ON Staff.Teacher = Allocation.Teacher WHERE Allocation.Enrolled > (SELECT Capacity FROM Theaters WHERE Theaters.Theater = Allocation.Theater)</pre>
+        </li>
+    </ul>
+</body>
+</html>

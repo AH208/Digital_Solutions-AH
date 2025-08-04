@@ -1,0 +1,17 @@
+1. wiseacres.sql
+   - This file is FYI and for future reference.
+   - It contains the SQL commands to create the database schema and populate it with initial data.
+   - It can be executed by calling it from app.py in the init_db() function.
+2. wiseacres-queries.sql
+   - This file is FYI and for future reference.
+   - It contains SQL queries that you can run to test the functionality of the database.
+3. wiseacres_dbcreate.py
+   - This Python script is used to create the database and tables using SQLite3.
+   - It will also populate the database with initial data.
+4. app.py
+   - This is the main Flask application file.
+   - It contains the routes and logic for handling requests.
+   - It imports the database functions from wiseacres_dbcreate.py to initialize the database.
+5. Run app.py to view and understand the functionality of this application.
+   - You will be able to use this for future reference and testing.
+   - There are a couple of errors in the code that you will need to fix.
