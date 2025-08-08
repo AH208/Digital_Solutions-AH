@@ -5,6 +5,100 @@
     <title>Title</title>
 </head>
 <body>
-
+    <h1>Welcome to the Shinhackers Database</h1>
+    <h2>Part 1</h2>
+    <ul>
+        <li>
+            <a href="{{url_for('april_games')}}">Games played in april</a>
+            <p>Select all from the Games table where the month is april.</p>
+            <pre>SELECT * FROM Games WHERE Month = 4</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('games_won_teams')}}">Games that we won</a>
+            <p>Select the team from the game table where our score is higher than their score.</p>
+            <pre>SELECT Team FROM Games WHERE Ours > Theirs</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('games')}}">All Games Played</a>
+            <p>Select all from the game table.</p>
+            <pre>SELECT * FROM Games</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('may_games')}}">Details of games played in May</a>
+            <p>Select the day, month, team, from the game table where the month is May.</p>
+            <pre>SELECT Day, Month, Team FROM Games WHERE Month = 5</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('scores_teams')}}">Scores of games versus Bellyfloppers and Kneeknockers.</a>
+            <p>Select the team, our score, their score from the game table where the team we were versus is Bellyfloppers or Kneeknockers.</p>
+            <pre>SELECT Team, Ours, Theirs FROM Games WHERE Team IN ('Bellyfloppers', 'Kneeknockers')</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('games_won')}}">Games that we won.</a>
+            <p>Select the frequency number of when our score is more than their score from the game table. </p>
+            <pre>SELECT COUNT(*) FROM Games WHERE Ours > Theirs</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('max_winning_margin')}}">Our biggest winning margin game.</a>
+            <p> Select the max number collected when our score is subtracted from their score in the game table.</p>
+            <pre>SELECT max(Ours-Theirs) FROM Games</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('ordered_games')}}">All games ordered by date</a>
+            <p>Select all from the game table sorted by month then day.</p>
+            <pre>SELECT * FROM Games ORDER BY Month, Day</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('ordered_games_table')}}">All games ordered by date (in a table)</a>
+            <p>(In a table) Select all from the game table sorted by month then day.</p>
+            <pre>SELECT * FROM Games ORDER BY Month, Day</pre>
+        </li>
+        <hr>
+    </ul>
+    <h2>Part 2</h2>
+    <ul>
+        <li>
+            <a href="{{url_for('total_games_points')}}">Total points scored in all games</a>
+            <pre>SELECT COUNT(*), SUM(Ours), SUM(Theirs) FROM Games</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('teams_beaten_by_10')}}">Teams that we have beaten by 10</a>
+            <pre>SELECT Team FROM Games WHERE Theirs - Ours >= 10</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('games_ordered_score')}}">All games ordered by score</a>
+            <pre>SELECT * FROM Games ORDER BY Ours DESC</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('games_ordered_score_table')}}">All games ordered by score (in a table)</a>
+            <pre>SELECT * FROM Games ORDER BY Ours DESC</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('april_second_half')}}">All games played in april (in a table)</a>
+            <pre>SELECT * FROM Games WHERE Month = 4 AND Day > 15</pre>
+        </li>
+        <li>
+            <a href="{{url_for('april_second_half_table')}}">All games played in april (in a table)</a>
+            <pre>SELECT * FROM Games WHERE Month = 4 AND Day > 15</pre>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('teams_played')}}">Teams we have played</a>
+            <pre>SELECT DISTINCT Team FROM Games</pre>
+        </li>
+        <hr>
+    </ul>
 </body>
 </html>
