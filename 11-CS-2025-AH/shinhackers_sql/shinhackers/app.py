@@ -102,24 +102,24 @@ def max_winning_margin():
     return (f"Our biggest winning margin: {max_margin}<br>"
     f"<a href='/'>Back to Home</a>")
 
-@app.route('/ordered_games_text')
-def ordered_games_text():
-    db = get_db()
-    cur = db.execute("SELECT * FROM Games ORDER BY Month, Day")
-    ordered_games_text = cur.fetchall()
-    result = "<br>".join([f"Day: {game[0]}, Month: {game[1]}, Team: {game[2]}, Ours: {game[3]}, Theirs: {game[4]}" for game in ordered_games_text])
-    return (f"Details of all games in order:<br>{result}<br>"
-            f"<a href='/'>Back to Home</a>")
-
 @app.route('/ordered_games')
 def ordered_games():
     db = get_db()
     cur = db.execute("SELECT * FROM Games ORDER BY Month, Day")
     ordered_games = cur.fetchall()
+    result = "<br>".join([f"Day: {game[0]}, Month: {game[1]}, Team: {game[2]}, Ours: {game[3]}, Theirs: {game[4]}" for game in ordered_games])
+    return (f"Details of all games in order:<br>{result}<br>"
+            f"<a href='/'>Back to Home</a>")
+
+@app.route('/ordered_games_table')
+def ordered_games_table():
+    db = get_db()
+    cur = db.execute("SELECT * FROM Games ORDER BY Month, Day")
+    ordered_games_table = cur.fetchall()
 
     # Create a DataFrame from the fetched data
     columns = ["Day", "Month", "Team", "Ours", "Theirs"]
-    df = pd.DataFrame(ordered_games, columns=columns)
+    df = pd.DataFrame(ordered_games_table, columns=columns)
 
     # Convert the DataFrame to an HTML table
     table_html = df.to_html(index=False)
@@ -139,6 +139,113 @@ def ordered_games():
         </body>
         </html>
     ''', table_html=table_html)
+
+#Part 2
+#AI also showed me this way, which is better to understand than the joining f string way...
+@app.route('/total_games_points')
+def total_games_points():
+    db = get_db()
+    cur = db.execute("SELECT COUNT(*), SUM(Ours), SUM(Theirs) FROM Games")
+    total_games, total_ours, total_theirs = cur.fetchone()
+    return (f"Total games played: {total_games}<br>"
+            f"Total points scored by us: {total_ours}<br>"
+            f"Total points scored against us: {total_theirs}<br>"
+            f"<a href='/'>Back to Home</a>")
+
+@app.route('/teams_beaten_by_10')
+def teams_beaten_by_10():
+    db = get_db()
+    cur = db.execute("SELECT Team FROM Games WHERE Theirs - Ours >= 10")
+    teams = cur.fetchall()
+    teams_list = [team[0] for team in teams]
+    return (f"Teams that have beaten us by 10 points or more: {', '.join(teams_list)}<br>"
+            f"<a href='/'>Back to Home</a>")
+
+@app.route('/games_ordered_score')
+def games_ordered_score():
+    db = get_db()
+    cur = db.execute("SELECT * FROM Games ORDER BY Ours")
+    ordered_games = cur.fetchall()
+    result = "<br>".join([f"Day: {game[0]}, Month: {game[1]}, Team: {game[2]}, Ours: {game[3]}, Theirs: {game[4]}" for game in ordered_games])
+    return (f"Details of all games ordered by our score:<br>{result}<br>"
+            f"<a href='/'>Back to Home</a>")
+
+@app.route('/games_ordered_score_table')
+def games_ordered_score_table():
+    db = get_db()
+    cur = db.execute("SELECT * FROM Games ORDER BY Ours DESC")
+    games = cur.fetchall()
+
+    # Create a DataFrame from the fetched data
+    columns = ["Day", "Month", "Team", "Ours", "Theirs"]
+    df = pd.DataFrame(games, columns=columns)
+
+    # Convert the DataFrame to an HTML table
+    table_html = df.to_html(index=False)
+
+    # Render the HTML template with the table
+    return render_template_string('''
+        <!doctype html>
+        <html>
+        <head>
+            <title>Games Ordered by Score</title>
+        </head>
+        <body>
+            <h1>Games ordered by our score:</h1>
+            {{ table_html|safe }}
+            <br>
+            <a href='/'>Back to Home</a>
+        </body>
+        </html>
+    ''', table_html=table_html)
+
+@app.route('/april_second_half')
+def april_second_half():
+    db = get_db()
+    cur = db.execute("SELECT * FROM Games WHERE Month = 4 AND Day > 15")
+    ordered_games_text = cur.fetchall()
+    result = "<br>".join([f"Day: {game[0]}, Month: {game[1]}, Team: {game[2]}, Ours: {game[3]}, Theirs: {game[4]}" for game in ordered_games_text])
+    return (f"Details of all games in the second half of April:<br>{result}<br>"
+            f"<a href='/'>Back to Home</a>")
+
+@app.route('/april_second_half_table')
+def april_second_half_table():
+    db = get_db()
+    cur = db.execute("SELECT * FROM Games WHERE Month = 4 AND Day > 15")
+    results = cur.fetchall()
+
+    # Create a DataFrame from the fetched data
+    columns = ["Day", "Month", "Team", "Ours", "Theirs"]
+    df = pd.DataFrame(results, columns=columns)
+
+    # Convert the DataFrame to an HTML table
+    table_html = df.to_html(index=False)
+
+    # Render the HTML template with the table
+    return render_template_string('''
+        <!doctype html>
+        <html>
+        <head>
+            <title>April Second Half Results</title>
+        </head>
+        <body>
+            <h1>Results in the second half of April:</h1>
+            {{ table_html|safe }}
+            <br>
+            <a href='/'>Back to Home</a>
+        </body>
+        </html>
+    ''', table_html=table_html)
+
+@app.route('/teams_played')
+def teams_played():
+    db = get_db()
+    cur = db.execute("SELECT DISTINCT Team FROM Games")
+    teams = cur.fetchall()
+    teams_list = [team[0] for team in teams]
+    return (f"Teams we have played so far: {', '.join(teams_list)}<br>"
+            f"<a href='/'>Back to Home</a>")
+
 
 
 if __name__ == '__main__':
