@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="865789aa-b01e-44f7-b609-e46def43a337" name="Changes" comment="04/08/2025&#10;&#10;SQL stuff is new!">
-      <change afterPath="$PROJECT_DIR$/11-CS-2025-AH/shinhackers_sql/shinhackers/shinhackers_dbcreate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/11-CS-2025-AH/shinhackers_sql/shinhackers/static/05 gettyimages-85758105_resized.jpg" afterDir="false" />
+    <list default="true" id="865789aa-b01e-44f7-b609-e46def43a337" name="Changes" comment="01/09/2025&#10;&#10;added new app.py - login not working yet">
+      <change afterPath="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data/csv_convert.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data/road_crashes.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11-CS-2025-AH/shinhackers_sql/shinhackers/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/11-CS-2025-AH/shinhackers_sql/shinhackers/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11-CS-2025-AH/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/11-CS-2025-AH/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +69,9 @@
     &quot;JavaScript Debug.form.html.executor&quot;: &quot;Run&quot;,
     &quot;Python.app (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.app (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app (3).executor&quot;: &quot;Run&quot;,
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.csv_convert.executor&quot;: &quot;Run&quot;,
     &quot;Python.random-num-gen-class-version.executor&quot;: &quot;Run&quot;,
     &quot;Python.random-num-gen.executor&quot;: &quot;Run&quot;,
     &quot;Python.random-num-gen_simple.executor&quot;: &quot;Run&quot;,
@@ -88,7 +91,7 @@
     &quot;database.data.extractors.current.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/alexh/PycharmProjects/PythonProjects/11-CS-2025-AH/shinhackers_sql/shinhackers&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/alexh/PycharmProjects/PythonProjects/11-CS-2025-AH/bne_crash_data/static&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -107,21 +110,21 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\bne_crash_data\static" />
+      <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\bne_crash_data\templates" />
       <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\shinhackers_sql\shinhackers" />
       <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\sql_note" />
       <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\Guessing_Game_Web\templates" />
-      <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH" />
-      <recent name="C:\Users\alexh\PycharmProjects\10-cs-2025-ah" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\bne_crash_data" />
       <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\shinhackers_sql\shinhackers\static" />
       <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\witsend_sql\witsend_flask" />
       <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\Normalisationpy\static" />
       <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\Normalisationpy\templates" />
-      <recent name="C:\Users\alexh\PycharmProjects\PythonProjects\11-CS-2025-AH\Guessing_Game_Web\templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app (1)">
+  <component name="RunManager" selected="Python.app (2)">
     <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProjects" />
       <option name="ENV_FILES" value="" />
@@ -145,7 +148,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="app (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProjects" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -154,12 +157,58 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/11-CS-2025-AH/witsend_sql/witsend" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/11-CS-2025-AH/witsend_sql/witsend/app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app (3)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProjects" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/11-CS-2025-AH/Guessing_Game_Web" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/11-CS-2025-AH/Guessing_Game_Web/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="csv_convert" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProjects" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data/csv_convert.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -191,59 +240,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="wiseacres_dbcreate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProjects" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/11-CS-2025-AH/sql_note" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/11-CS-2025-AH/sql_note/wiseacres_dbcreate.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="witsend_dbcreate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProjects" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/11-CS-2025-AH/witsend_sql/witsend" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/11-CS-2025-AH/witsend_sql/witsend/witsend_dbcreate.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.app (2)" />
+        <item itemvalue="Python.app (3)" />
+        <item itemvalue="Python.csv_convert" />
         <item itemvalue="Python.app (1)" />
         <item itemvalue="Python.shinhackers_dbcreate" />
-        <item itemvalue="Python.app" />
-        <item itemvalue="Python.witsend_dbcreate" />
-        <item itemvalue="Python.wiseacres_dbcreate" />
       </list>
     </recent_temporary>
   </component>
@@ -318,6 +321,17 @@
       <workItem from="1754543201133" duration="182000" />
       <workItem from="1754607906518" duration="6236000" />
       <workItem from="1754627365591" duration="1049000" />
+      <workItem from="1754870640289" duration="2738000" />
+      <workItem from="1754891662915" duration="9000" />
+      <workItem from="1755134533030" duration="729000" />
+      <workItem from="1755837220630" duration="620000" />
+      <workItem from="1756082327533" duration="478000" />
+      <workItem from="1756257172777" duration="5502000" />
+      <workItem from="1756265311173" duration="2008000" />
+      <workItem from="1756343745419" duration="713000" />
+      <workItem from="1756422783805" duration="3199000" />
+      <workItem from="1756438394525" duration="2434000" />
+      <workItem from="1756697653100" duration="265000" />
     </task>
     <task id="LOCAL-00001" summary="TEST">
       <option name="closed" value="true" />
@@ -451,17 +465,21 @@
     <MESSAGE value="04/08/2025&#10;&#10;SQL stuff is new!" />
     <MESSAGE value="07/08/2025&#10;&#10;Done first part of shin hackers&#10;Imported panda for 'fun'" />
     <MESSAGE value="8/08/2025 - Added part 2 and more!" />
-    <option name="LAST_COMMIT_MESSAGE" value="8/08/2025 - Added part 2 and more!" />
+    <MESSAGE value="08/08/2025&#10;&#10;shinhackers base is complete" />
+    <MESSAGE value="01/09/2025&#10;&#10;added new app.py - login not working yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="01/09/2025&#10;&#10;added new app.py - login not working yet" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PythonProjects$random_num_gen.coverage" NAME="random-num-gen Coverage Results" MODIFIED="1749010186266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH" />
+    <SUITE FILE_PATH="coverage/PythonProjects$app__3_.coverage" NAME="app (3) Coverage Results" MODIFIED="1756422876603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/Guessing_Game_Web" />
     <SUITE FILE_PATH="coverage/PythonProjects$wiseacres_dbcreate.coverage" NAME="wiseacres_dbcreate Coverage Results" MODIFIED="1752811102295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/sql_note" />
     <SUITE FILE_PATH="coverage/PythonProjects$random_num_gen_txtversion.coverage" NAME="random-num-gen_txtversion Coverage Results" MODIFIED="1738714786716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH" />
-    <SUITE FILE_PATH="coverage/PythonProjects$app__2_.coverage" NAME="app (2) Coverage Results" MODIFIED="1753228582017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/sql_note" />
+    <SUITE FILE_PATH="coverage/PythonProjects$app__2_.coverage" NAME="app (2) Coverage Results" MODIFIED="1756440055255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data" />
+    <SUITE FILE_PATH="coverage/PythonProjects$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1754629641010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/shinhackers_sql/shinhackers" />
     <SUITE FILE_PATH="coverage/PythonProjects$random_num_gen_version2.coverage" NAME="random-num-gen_version2 Coverage Results" MODIFIED="1738714793136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH" />
-    <SUITE FILE_PATH="coverage/PythonProjects$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1754613469023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/shinhackers_sql/shinhackers" />
     <SUITE FILE_PATH="coverage/PythonProjects$witsend_dbcreate.coverage" NAME="witsend_dbcreate Coverage Results" MODIFIED="1753418310418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/witsend_sql/witsend" />
     <SUITE FILE_PATH="coverage/PythonProjects$app.coverage" NAME="app Coverage Results" MODIFIED="1754282434617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/witsend_sql/witsend" />
+    <SUITE FILE_PATH="coverage/PythonProjects$csv_convert.coverage" NAME="csv_convert Coverage Results" MODIFIED="1756258195177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/bne_crash_data" />
     <SUITE FILE_PATH="coverage/PythonProjects$random_num_gen_class_version.coverage" NAME="random-num-gen-class-version Coverage Results" MODIFIED="1739506012030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH" />
     <SUITE FILE_PATH="coverage/PythonProjects$random.coverage" NAME="random Coverage Results" MODIFIED="1749010003310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH" />
     <SUITE FILE_PATH="coverage/PythonProjects$shinhackers_dbcreate.coverage" NAME="shinhackers_dbcreate Coverage Results" MODIFIED="1754538873897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/11-CS-2025-AH/shinhackers_sql/shinhackers" />
