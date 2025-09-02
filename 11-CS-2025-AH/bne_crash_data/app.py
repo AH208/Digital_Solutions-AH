@@ -1,8 +1,7 @@
-from flask import Flask, render_template, g
-#import os
+from flask import Flask, render_template, g, request, redirect, url_for, session
 import sqlite3
 import folium
-from folium.plugins import HeatMap, MarkerCluster
+from folium.plugins import MarkerCluster
 from werkzeug.security import generate_password_hash, check_password_hash
 
 #NEED LOGIN/REGISTER ASAP
@@ -11,7 +10,7 @@ app = Flask(__name__)
 CRASH_DB = 'crashes.db'
 AUTH_DB = 'auth.db'
 
-#app.secret_key = this is not a secret
+app.secret_key = "framework13pro"
 
 def get_crash_db():
     db = getattr(g, 'crash_db', None)
@@ -26,6 +25,7 @@ def get_auth_db():
         db = g._database = sqlite3.connect(AUTH_DB)
         db.row_factory = sqlite3.Row
     return db
+
 
 @app.teardown_appcontext
 def close_connections(exception):
@@ -53,40 +53,62 @@ def init_auth_db():
 
 
 @app.route('/')
-def index():
-    return render_template("index.html")
-#    , user=session.get('user'))
+def home():
+    if 'user' in session:
+        user = session['user']
+        # safe suburbs
+        db = get_crash_db()
+        cur = db.execute("""
+            SELECT Loc_Suburb, COUNT(*) as crash_count
+            FROM crashes 
+            WHERE Crash_Year = 2024
+            AND Loc_Suburb IS NOT NULL
+            GROUP BY Loc_Suburb
+            HAVING crash_count <= 5
+            ORDER BY crash_count ASC
+            LIMIT 10
+        """)
+        safe_suburbs = cur.fetchall()
+        return render_template('index.html', user=user, safe_suburbs=safe_suburbs)
+    return redirect(url_for('login'))
 
-    @app.route('/register', methods=['POST'])
-    def register():
-        username = request.form['username']
-        password = request.form['password']
-        conn = sqlite3.connect('num_database.db')
-        cursor = conn.cursor()
-        cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, password))
-        conn.commit()
-        conn.close()
-        return redirect(url_for('login'))
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
-    @app.route('/login')
-    def login():
-        return render_template('login.html')
+@app.route('/register', methods=['POST'])
+def register_post():
+    username = request.form['username']
+    password = request.form['password']
+    conn = get_auth_db()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
+    conn.commit()
+#user = cursor.fetchone()
+    return redirect(url_for('login'))
 
-    @app.route('/login', methods=['POST'])
-    def login_post():
-        username = request.form['username']
-        password = request.form['password']
-        conn = sqlite3.connect('crashing.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
-        user = cursor.fetchone()
-        conn.close()
-        if user:
-            session['user'] = user[1]
-            print(user)
-            return redirect(url_for('welcome'))
-        return 'login Failed'
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
+@app.route('/login', methods=['POST'])
+def login_post():
+    username = request.form['username']
+    password = request.form['password']
+    conn = get_auth_db()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
+    user = cursor.fetchone()
+    if user:
+        session['user'] = user[1]
+        print(user)
+        return redirect(url_for('home'))
+    return 'login Failed'
+
+@app.route('/signout')
+def signout():
+    session.pop('user', None)
+    return redirect(url_for('login'))
 
 @app.route('/heatmap')
 def heatmap():
@@ -100,14 +122,9 @@ def heatmap():
     """)
     rows = cur.fetchall()
 
-    # Heatmap data
-    heat_data = [(row["Crash_Latitude"], row["Crash_Longitude"]) for row in rows]
-    HeatMap(heat_data, radius=8, blur=6, max_zoom=13)
-
-
-
     # folium tutorial time
-    cluster = MarkerCluster()
+    leaflet = folium.Map()
+    cluster = MarkerCluster().add_to(leaflet)
     for row in rows:
         severity = str(row["Crash_Severity"]).lower()
         if "fatal" in severity or "hospitalisation" in severity:
@@ -124,9 +141,32 @@ def heatmap():
             popup=f"{row['Crash_Severity']}<br>{row['Crash_Nature']} - {row['Crash_Type']}"
         ).add_to(cluster)
 
+    return render_template("map.html", map=leaflet.get_root()._repr_html_())
 
-    return render_template("map.html")
 
+@app.route('/lookup', methods=['GET', 'POST'])
+def search():
+    suburbs = []
+    crashes = []
+    if request.method == 'GET':
+        # Get unique suburbs for dropdown
+        db = get_crash_db()
+        cur = db.execute("SELECT DISTINCT Loc_Suburb FROM crashes ORDER BY Loc_Suburb")
+        suburbs = [row['Loc_Suburb'] for row in cur.fetchall()]
+
+    if request.method == 'POST':
+        suburb = request.form.get('suburb')
+        db = get_crash_db()
+        cur = db.execute("""
+            SELECT Loc_Suburb, Crash_Nature, Crash_Type, Crash_Severity, Crash_Year
+            FROM crashes
+            WHERE Loc_Suburb = ?
+            ORDER BY Crash_Year DESC
+            LIMIT 100
+        """, [suburb])
+        crashes = cur.fetchall()
+
+    return render_template('lookup.html', suburbs=suburbs, crashes=crashes)
 
 if __name__ == '__main__':
     app.run(debug=True)
